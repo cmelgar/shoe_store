@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="login_button">Login</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="text_welcome">Welcome to the best shoe shop that you can find online, there are all kind of shoes and brands that you can choose. If you have any questions or concerns about your purchase, just contact us and we can help you. Don\'t forget to rating us in the play store :).</string>
+    <string name="text_details">These is just the welcome screen and we are really excited to have you here with us, thanks for the preference and share the app with all your friends and family, they\'ll glad to be part of our clients.</string>
+    <string name="go_button">Go ahead!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Log out</string>
+    <string name="text_instructions">There are some details that we want to provide you before any purchase that you want to do. This is a shop online, but you can find our store in the most important markets around the country.</string>
+    <string name="text_additional_information">The first contact with a new customer is a perfect time to engage them even more by offering a gift or a special price. On the one hand, the customer will feel rewarded for their effort and build a more positive attitude towards you. On the other hand, an offer will urge them to start shopping or, at least, browsing immediately. And if the offer is time-limited, that’s an additional motivation to shop while the offer lasts.</string>
+    <string name="goStore_button">Go to Store</string>
+    <string name="shoe_name_text">Shoe name</string>
+    <string name="company_text">Company</string>
+    <string name="shoe_size_text">Shoe size</string>
+    <string name="description_text">Description</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="save_button">Save</string>
+    <string name="more_menu">More menu</string>
+    <string name="about_text">About</string>
+</resources>
