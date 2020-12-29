@@ -35,13 +35,15 @@ class ListAdapter(context: Context, shoeList: ArrayList<Shoe>):BaseAdapter() {
 
         val shoe:Shoe = getItem(p0) as Shoe
 
-        binding.nameItemText.text = shoe.name
+        with (binding) {
+            this.nameItemText.text = shoe.name
 
-        binding.companyItemText.text = shoe.company
+            this.companyItemText.text = shoe.company
 
-        binding.descriptionItemText.text = shoe.description
+            this.descriptionItemText.text = shoe.description
 
-        binding.sizeItemText.text = shoe.size.toString()
+            this.sizeItemText.text = shoe.size.toString()
+        }
 
         return binding.root
     }

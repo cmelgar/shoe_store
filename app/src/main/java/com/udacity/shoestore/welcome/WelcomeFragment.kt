@@ -21,19 +21,6 @@ class WelcomeFragment : Fragment() {
             view.findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
         }
 
-        setHasOptionsMenu(true)
-
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.navdrawer_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item!!,
-                view!!.findNavController())
-                || super.onOptionsItemSelected(item)
     }
 }

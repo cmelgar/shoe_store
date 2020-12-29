@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.InstructionsFragmentBinding
+import com.udacity.shoestore.models.Shoe
 
 
 class InstructionsFragment : Fragment() {
@@ -20,20 +21,10 @@ class InstructionsFragment : Fragment() {
         val binding = DataBindingUtil.inflate<InstructionsFragmentBinding>(inflater, R.layout.instructions_fragment, container, false)
 
         binding.goStoreButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragmentToShoeListingFragment())
+            view.findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragmentToShoeListingFragment(
+                arrayListOf<Shoe>() ))
         }
-        setHasOptionsMenu(true)
+
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.navdrawer_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item!!,
-                view!!.findNavController())
-                || super.onOptionsItemSelected(item)
     }
 }
