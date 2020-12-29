@@ -14,11 +14,20 @@ class ShoeViewModel(): ViewModel() {
     val shoe: LiveData<Shoe>
     get() = _shoe
 
-    var list:ArrayList<Shoe> = arrayListOf()
+    var listTemp2:ArrayList<Shoe> = arrayListOf()
+    private val list = MutableLiveData<ArrayList<Shoe>>()
+    val listTemp : LiveData<ArrayList<Shoe>>
+        get() = list
 
     fun addShoeToList(name: String, size: String, company: String, description: String){
         val shoeTemp = Shoe(name, size.toDouble(), company, description)
-        list.add(shoeTemp)
+        listTemp2.add(shoeTemp)
+        list.value = listTemp2
     }
 
+    fun getShoe()  {
+        listTemp2.forEach {
+            _shoe.value = it
+        }
+    }
 }
