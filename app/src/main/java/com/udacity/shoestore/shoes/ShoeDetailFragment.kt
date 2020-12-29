@@ -16,8 +16,7 @@ import com.udacity.shoestore.models.Shoe
 
 class ShoeDetailFragment : Fragment() {
 
-    private lateinit var viewModel: ShoeViewModel
-    private lateinit var viewModelFactory: ShoeViewModelFactory
+    val viewModel: ShoeViewModel by activityViewModels { ShoeViewModelFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,17 +25,12 @@ class ShoeDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<ShoeDetailFragmentBinding>(inflater, R.layout.shoe_detail_fragment, container, false)
 
-        val shoeDetailFragmentArgs by navArgs<ShoeDetailFragmentArgs>()
-        viewModelFactory = ShoeViewModelFactory(shoeDetailFragmentArgs.shoeList as ArrayList<Shoe>)
-
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ShoeViewModel::class.java)
-
         binding.shoeViewModel = viewModel
         binding.setLifecycleOwner(this)
 
         binding.cancelButton.setOnClickListener { view: View ->
 
-            view.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListingFragment(viewModel.list ))
+            view.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListingFragment( ))
         }
 
         binding.saveButton.setOnClickListener { view: View ->
@@ -48,7 +42,7 @@ class ShoeDetailFragment : Fragment() {
                 Toast.makeText(context, "There are some fields empty", Toast.LENGTH_SHORT).show()
             }else {
                 viewModel.addShoeToList(name, size, company, description)
-                view.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListingFragment(viewModel.list))
+                view.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListingFragment())
             }
         }
 

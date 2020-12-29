@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,9 +17,8 @@ import com.udacity.shoestore.models.Shoe
 class ShoeListingFragment : Fragment() {
 
     private lateinit var binding: ShoeListingFragmentBinding
-    private lateinit var viewModel: ShoeViewModel
-    private lateinit var viewModelFactory: ShoeViewModelFactory
-    //val viewModel: ShoeViewModel by activityViewModels { ShoeViewModelFactory(viewModel.list) }
+
+    val viewModel: ShoeViewModel by activityViewModels { ShoeViewModelFactory() }
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -28,17 +28,15 @@ class ShoeListingFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.shoe_listing_fragment, container, false)
 
-        val shoeFragmentArgs by navArgs<ShoeListingFragmentArgs>()
-        viewModelFactory = ShoeViewModelFactory(shoeFragmentArgs.shoeList as ArrayList<Shoe>)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ShoeViewModel::class.java)
-        //binding.shoeViewModel = viewModel
+        binding.shoeViewModel = viewModel
+
         binding.setLifecycleOwner(this)
 
         binding.listShoe.adapter = ListAdapter(requireContext(), viewModel.list)
 
 
         binding.moreButton.setOnClickListener{ view: View ->
-            view.findNavController().navigate(ShoeListingFragmentDirections.actionShoeListingFragmentToShoeDetailFragment(viewModel.list))
+            view.findNavController().navigate(ShoeListingFragmentDirections.actionShoeListingFragmentToShoeDetailFragment())
         }
 
         setHasOptionsMenu(true)

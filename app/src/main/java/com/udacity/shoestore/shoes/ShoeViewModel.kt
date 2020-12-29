@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
 
-class ShoeViewModel(listShoe: ArrayList<Shoe>): ViewModel() {
+class ShoeViewModel(): ViewModel() {
 
     private val _shoe = MutableLiveData<Shoe>()
 
@@ -15,12 +15,6 @@ class ShoeViewModel(listShoe: ArrayList<Shoe>): ViewModel() {
     get() = _shoe
 
     var list:ArrayList<Shoe> = arrayListOf()
-
-    init {
-        Timber.i("ShoeViewModel called ${listShoe.size}")
-        list = listShoe
-    }
-
 
     fun addShoeToList(name: String, size: String, company: String, description: String){
         val shoeTemp = Shoe(name, size.toDouble(), company, description)
